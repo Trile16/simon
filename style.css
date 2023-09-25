@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 body {
@@ -7,6 +8,7 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -14,7 +16,7 @@ body {
 h1 {
   text-align: center;
   position: sticky;
-  bottom: 50%;
+  bottom: calc(50% + 2rem);
   width: 40%;
   padding-top: calc(20% - 1rem);
   padding-bottom: calc(20% - 1rem);
@@ -43,6 +45,14 @@ h1 {
 #blue {
   background-color: blue;
   border-bottom-right-radius: 100%;
+}
+
+.cursor-hover {
+  cursor: pointer;
+}
+
+span {
+  text-align: center;
 }
 
 div > div {

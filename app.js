@@ -1,7 +1,6 @@
 // Game State
-
 const gameState = {
-  colorSequence: ["red", "yellow", "green", "green", "blue"],
+  colorSequence: [],
   colorIndex: 0,
   highScore: 0,
   buttonsActive: false,
@@ -14,6 +13,8 @@ const green = document.getElementById("green");
 const red = document.getElementById("red");
 const yellow = document.getElementById("yellow");
 const blue = document.getElementById("blue");
+const score = document.getElementById("score");
+const highScore = document.getElementById("high-score");
 
 // Event Handlers
 
@@ -23,12 +24,35 @@ colorBox.addEventListener("click", (e) => {
     if (e.target.id === gameState.colorSequence[gameState.colorIndex]) {
       gameState.colorIndex++;
       console.log(gameState.colorIndex);
+      if (gameState.colorIndex === gameState.colorSequence.length) {
+        score.innerText = `Score: ${gameState.colorSequence.length}`;
+        if (gameState.highScore < gameState.colorSequence.length) {
+          gameState.highScore = gameState.colorSequence.length;
+          highScore.innerText = `High Score: ${gameState.highScore}`;
+          localStorage.setItem("simonhighscore", gameState.highScore);
+        }
+
+        runSequence();
+      }
+    } else {
+      if (gameState.highScore < gameState.colorSequence.length) {
+        gameState.highScore = gameState.colorSequence.length - 1;
+        highScore.innerText = `High Score: ${gameState.highScore}`;
+      }
+      gameState.colorSequence = [];
+      score.innerText = `Score: ${gameState.colorSequence.length}`;
+      runSequence();
     }
   }
 });
 
 const runSequence = () => {
+  green.classList.remove("cursor-hover");
+  red.classList.remove("cursor-hover");
+  yellow.classList.remove("cursor-hover");
+  blue.classList.remove("cursor-hover");
   gameState.buttonsActive = false;
+  gameState.colorIndex = 0;
   const randomColor = Math.floor(Math.random() * 4);
 
   if (randomColor === 0) {
@@ -78,7 +102,15 @@ const runSequence = () => {
   setTimeout(() => {
     console.log("end");
     gameState.buttonsActive = true;
+    green.classList.add("cursor-hover");
+    red.classList.add("cursor-hover");
+    yellow.classList.add("cursor-hover");
+    blue.classList.add("cursor-hover");
   }, gameState.colorSequence.length * 1000);
 };
 
+if (localStorage.getItem("simonhighscore")) {
+  gameState.highScore = localStorage.getItem("simonhighscore");
+  highScore.innerText = `High Score: ${gameState.highScore}`;
+}
 runSequence();
