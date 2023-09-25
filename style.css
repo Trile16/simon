@@ -28,27 +28,43 @@ h1 {
 }
 
 #green {
+  cursor: pointer;
   background-color: green;
   border-top-left-radius: 100%;
 }
 
+#green:active {
+  background-color: lightgreen !important;
+}
+
 #red {
+  cursor: pointer;
   background-color: red;
   border-top-right-radius: 100%;
 }
 
+#red:active {
+  background-color: pink !important;
+}
+
 #yellow {
+  cursor: pointer;
   background-color: yellow;
   border-bottom-left-radius: 100%;
 }
 
+#yellow:active {
+  background-color: lightyellow !important;
+}
+
 #blue {
+  cursor: pointer;
   background-color: blue;
   border-bottom-right-radius: 100%;
 }
 
-.cursor-hover {
-  cursor: pointer;
+#blue:active {
+  background-color: lightblue !important;
 }
 
 span {

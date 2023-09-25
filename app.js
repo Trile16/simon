@@ -47,10 +47,10 @@ colorBox.addEventListener("click", (e) => {
 });
 
 const runSequence = () => {
-  green.classList.remove("cursor-hover");
-  red.classList.remove("cursor-hover");
-  yellow.classList.remove("cursor-hover");
-  blue.classList.remove("cursor-hover");
+  green.style.pointerEvents = "none";
+  red.style.pointerEvents = "none";
+  yellow.style.pointerEvents = "none";
+  blue.style.pointerEvents = "none";
   gameState.buttonsActive = false;
   gameState.colorIndex = 0;
   const randomColor = Math.floor(Math.random() * 4);
@@ -102,10 +102,14 @@ const runSequence = () => {
   setTimeout(() => {
     console.log("end");
     gameState.buttonsActive = true;
-    green.classList.add("cursor-hover");
-    red.classList.add("cursor-hover");
-    yellow.classList.add("cursor-hover");
-    blue.classList.add("cursor-hover");
+    green.style.backgroundColor = "green";
+    red.style.backgroundColor = "red";
+    yellow.style.backgroundColor = "yellow";
+    blue.style.backgroundColor = "blue";
+    green.style.pointerEvents = "auto";
+    red.style.pointerEvents = "auto";
+    yellow.style.pointerEvents = "auto";
+    blue.style.pointerEvents = "auto";
   }, gameState.colorSequence.length * 1000);
 };
 
