@@ -143,7 +143,7 @@ const runSequence = () => {
     red.style.pointerEvents = "auto";
     yellow.style.pointerEvents = "auto";
     blue.style.pointerEvents = "auto";
-  }, (gameState.colorSequence.length + 0.5) * 1000);
+  }, gameState.colorSequence.length * 1000);
 };
 
 if (localStorage.getItem("simonhighscore")) {
